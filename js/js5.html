@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js5.html</title>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            function moveLayer(){
+                var str = document.getElementById("hello");
+                var num1 = Math.random() * 500;
+                var num2 = Math.random() * 500;
+                
+                str.style.position = 'fixed';
+                str.style.left = num1 + "px";
+                str.style.top = num2 + "px";
+            }
+        </script>
+        <form>
+            <input type="button" value="移動" onclick="moveLayer()">
+        </form>
+        <div id="hello">
+            <p>Hello World!</p>
+        </div>
+    </body>
+</html>

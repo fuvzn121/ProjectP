@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>sql3.html</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var req = new XMLHttpRequest();
+            document.addEventListener("DOMContentLoaded", function(){
+                var btn = document.getElementById('btn1');
+                btn.addEventListener('click', loadTable, false);
+            }, false);
+            function loadTable() {
+                req.onreadystatechange = function() {
+                    if (req.readyState == 4 && req.status == 200) {
+                        var ta = document.getElementById("table");
+                        //表が存在するとき置き換え
+                        var d_ta = ta.getElementsByTagName('table');
+                        if (d_ta.length != 0) {
+                            while (d_ta[0])
+                                d_ta[0].parentNode.removeChild(d_ta[0]);
+                        }
+
+                        var json_obj = JSON.parse(req.responseText);
+                        var rows = [];
+                        var table = document.createElement("table");
+                        table.border = "1px";
+
+                        for (var i = 0; i < json_obj.length; i++) {
+                            rows.push(table.insertRow(-1));
+                            for(var j in json_obj[i]){
+                                var cell = rows[i].insertCell(-1);
+                                cell.appendChild(document.createTextNode(json_obj[i][j]))
+                            }
+                        }
+                    ta.appendChild(table);
+                    }
+                };
+                req.open('GET', "./sql3.php", true);
+                req.send();
+            }
+
+        </script>
+        <div id="table"></div>
+        <input type="button" name="btn1" id="btn1" value="レコード表示"><br><br>
+        <a href="index.html">TOP</a>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>sql7.html</title>
+    <script type="text/javascript" src="./sql7.js"></script>
+    <link rel="stylesheet" type="text/css" href="sql7.css">
+</head>
+
+<body>
+    <h1>住所録</h1>
+    <div id="content">
+        <div id="leftmenu">
+            <h3>全体操作</h3> テーブルの作成
+            <input type="button" name="c_table" id="c_table" value="作成">
+            <div id="ctdiv"></div>
+            <br>
+            <br> テーブルの削除
+            <input type="button" name="d_table" id="d_table" value="削除">
+            <div id="dtdiv"></div>
+            <h3>レコード登録</h3> 
+            氏名
+            <input type="text" name="add_name" id="add_name" value="">
+            <br> 住所
+            <input type="text" name="add_address" id="add_address" value="">
+            <br> メールアドレス
+            <input type="text" name="add_email" id="add_email" value="">
+            <br>
+            <input type="button" name="add_btn" id="add_btn" value="登録">
+            <br><br>
+            <div id="add_menu"></div>
+        </div>
+            
+        <div id="main">
+            <h3>レコード一覧</h3>
+            <input type="button" name="search_all" id="search_all" value="表示">
+            <input type="button" name="hide_table" id="hide_table" value="隠す"><br><br>
+            <div id="all_t"></div>
+        </div>
+    </div>
+        <div id="rightmenu">
+            <h3>レコード検索</h3>
+            <p>検索する列</p>
+            <form name="s_select">
+                <input type="radio" name="property" id="sid" value="id" checked>ID
+                <input type="radio" name="property" id="sname" value="name">名前
+                <input type="radio" name="property" id="saddress" value="address">住所
+                <input type="radio" name="property" id="semali" value="email">メールアドレス
+            </form>
+            <br><br>
+            <input type="text" name="search_text" id="search_text" value="">
+            <input type="button" name="search_btn" id="search_btn" value="検索"><br><br>
+            <div id="s_result"></div><br>
+            <h3>レコード編集</h3>
+            ID <input type=text name=c_id id="c_id" value="" readonly="readonly"><br>
+            氏名
+            <input type="text" name="c_name" id="c_name" value="">
+            <br> 住所
+            <input type="text" name="c_address" id="c_address" value="">
+            <br> メールアドレス
+            <input type="text" name="c_email" id="c_email" value="">
+            <br>
+            <input type="button" name="c_record" id="c_record" value="変更">
+            <input type="button" name="d_record" id="d_record" value="削除"><br>
+            <div id="u_record"></div>
+    </div>
+</body>
+
+</html>

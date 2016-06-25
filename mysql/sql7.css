@@ -1,0 +1,36 @@
+@charset "UTF-8";
+h1 {
+  float: left;
+  width: 100%;
+}
+#ctdiv {
+    color: red;
+}
+
+#dtdiv {
+    color: red;
+}
+
+
+#content {
+    width: 60%;
+    float: left;
+}
+#leftmenu {
+    width: 40%;
+    float: left;
+    padding-left: 1%;
+}
+#main {
+    width: 40%;
+    float: right;
+}
+
+#rightmenu {
+    width: 30%;
+    float: right;
+}
+
+#addmenu {
+    color: red;
+}

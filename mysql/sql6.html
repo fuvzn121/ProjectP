@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>sql6.html</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var req = new XMLHttpRequest();
+
+            document.addEventListener("DOMContentLoaded", function(){
+                var btn = document.getElementById('btn1');
+                btn.addEventListener('click', loadTable, false);
+            }, false);
+
+            function loadTable() {
+                var input = document.getElementById('tf');
+                var url = "./sql4.php?param=" + input.value;
+
+                req.onreadystatechange = function() {
+                    if (req.readyState == 4 && req.status == 200) {     
+                        var ta = document.getElementById("table");
+                        var d_ta = ta.getElementsByTagName('table');
+
+                        if (d_ta.length != 0) {
+                            while (d_ta[0])
+                                d_ta[0].parentNode.removeChild(d_ta[0]);
+                        }
+
+                        var json_obj = JSON.parse(req.responseText);
+                        var rows = [];
+                        var table = document.createElement("table");
+                        table.border = "1px";
+
+                        for (var i = 0; i < json_obj.length; i++) {
+                            rows.push(table.insertRow(-1));
+                            for(var j in json_obj[i]){
+                                var cell = rows[i].insertCell(-1);
+                                cell.appendChild(document.createTextNode(json_obj[i][j]))
+                            }
+                        }
+                        ta.appendChild(table);
+
+                        var text;
+                        var button;
+                        var form = document.getElementById("cform");
+                        var d_fo = form.getElementsByTagName("input")
+
+                        if (d_fo.length != 0) {
+                            while (d_fo)
+                                d_fo[6].parentNode.removeChild(d_fo[6])
+
+                                }
+                        for (var i = 0; i < json_obj.length; i++){
+                            for (var j in json_obj[i]){
+                                text = document.createElement("input");
+                                text.type = "text";
+                                text.id = "tf" + j;
+                                text.value = json_obj[i][j];
+                                form.appendChild(text);
+                            }
+                        }
+
+                        button = document.createElement("input");
+                        button.type = "button";
+                        button.id = "btn2";
+                        button.value = "編集";
+                        form.appendChild(button);
+
+                        text = document.cre;
+                        button = document.cre;
+
+                        var btn2 = document.getElementById('btn2');
+                        btn2.addEventListener('click', submitData, false);
+                        
+                        var dbutton = document.createElement("input");
+                        dbutton.type = "button";
+                        dbutton.id = "dbtn";
+                        dbutton.value = "削除";
+                        form.appendChild(dbutton);
+
+                        dbutton = document.cre;
+
+                        var dbtn = document.getElementById('dbtn');
+                        dbtn.addEventListener('click', deleteData, false);
+                    }
+                };
+                req.open('GET', url, true);
+                req.send(null);
+            }
+
+            function submitData(){
+                var input1 = document.getElementById('tfID');
+                var input2 = document.getElementById('tfname');
+                var input3 = document.getElementById('tfaddress');
+                var input4 = document.getElementById('tfemail');
+                var url = "./sql5.php?param1=" + input1.value + "&param2=" + input2.value + "&param3=" +  input3.value + "&param4=" + input4.value;
+
+                document.getElementById('update').textContent = "更新しました";
+
+                req.open('GET', url, true);
+                req.send(null);
+            }
+            
+            var dload = document.getElementById('')
+            
+            function deleteData(){
+                var d_inp = document.getElementById('tfID');
+                var url = "./sql6.php?dtext=" + d_inp.value;
+                document.getElementById('update').textContent = "削除しました";
+                
+                req.open('GET', url, true);
+                req.send(null);
+                
+            }
+
+
+
+        </script>
+        <input type="text" name="tf" id="tf">
+        <input type="button" name="btn1" id="btn1" value="検索"><br><br>
+        <div id="table"></div><br>
+        <div id="cform"></div><br>
+        <div id="update"></div><br>
+        <a href="index.html">TOP</a>
+    </body>
+</html>

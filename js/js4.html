@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js4.html</title>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            function changeCheck(){
+                var checkst = document.getElementById("check")
+                if(checkst.checked){
+                    checkst.checked = false;
+                } else{
+                    checkst.checked = true;
+                }
+            }
+        </script>
+        <form>
+            <input type="checkbox" id="check">
+            <input type="button" value="切り替え" onclick="changeCheck()">
+        </form>
+    </body>
+</html>

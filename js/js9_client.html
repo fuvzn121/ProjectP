@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js9_client.html</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            req = new XMLHttpRequest();
+            document.addEventListener("DOMContentLoaded", function(){
+                var btn = document.getElementById('btn1');
+                btn.addEventListener('click', loadText, false);
+            }, false);
+            function loadText() {
+                var input = document.getElementById('tf');
+                var url = "./js7_server.php?param=" + input.value;
+                req.onreadystatechange = function(){
+                    if(req.readyState == 4 && req.status == 200){
+                        document.getElementById('tf').value = req.responseText;
+                    }
+                }
+                req.open('GET', url, true);
+                req.send();
+                }
+        </script>
+            <input type="text" name="tf" id="tf">
+            <input type="button" name="btn1" id="btn1" value="送信">
+    </body>
+</html>

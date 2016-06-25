@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js6_client.html</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            req = new XMLHttpRequest();
+            function loadText() {
+                req.onreadystatechange = function(){
+                    if(req.readyState == 4 && req.status == 200){
+                        alert(req.responseText);
+                    }
+                }
+            
+                req.open('GET', './js6_server.php', true);
+                req.send(null);
+                }
+        </script>
+        <form action="./js6_server.php" method="get" >
+            <input type="button" name="btn" value="表示" onclick="loadText()">
+        </form>
+    </body>
+</html>
